@@ -1,5 +1,4 @@
 {% set version = '0.5.0' %}
-
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,20 +9,22 @@ package:
 source:
   fn: rbokeh_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/rbokeh_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/rbokeh/rbokeh_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/rbokeh_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/rbokeh/rbokeh_{{ version }}.tar.gz
   sha256: 499c3224a7dcaeb4bb60fd645b3ef528a20e59437747a073713941b80cbcebd2
 
 build:
-  number: 0
-  # r-maps is not available under windows
-  skip: true  # [win]
+  merge_build_host: True  # [win]
+  number: 1
+  skip: true  # [win32]
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
+    - {{posix}}zip               # [win]
+  host:
     - r-base
     - r-digest
     - r-ggplot2
@@ -52,7 +53,7 @@ requirements:
 
 test:
   commands:
-    - $R -e "library('rbokeh')"  # [not win]
+    - $R -e "library('rbokeh')"           # [not win]
     - "\"%R%\" -e \"library('rbokeh')\""  # [win]
 
 about:
@@ -66,3 +67,7 @@ extra:
   recipe-maintainers:
     - johanneskoester
     - bgruening
+    - daler
+    - jdblischak
+    - cbrueffer
+    - dbast
