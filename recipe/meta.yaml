@@ -1,4 +1,4 @@
-{% set version = '0.5.0' %}
+{% set version = "0.5.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -15,15 +15,15 @@ source:
 
 build:
   noarch: generic
-  merge_build_host: True  # [win]
-  number: 1002
+  merge_build_host: true  # [win]
+  number: 1003
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{posix}}zip               # [win]
+    - {{ posix }}zip               # [win]
   host:
     - r-base
     - r-digest
@@ -59,10 +59,12 @@ test:
 about:
   home: https://hafen.github.io/rbokeh https://github.com/bokeh/rbokeh
   license: MIT
-  summary: A native R plotting library that provides a flexible declarative interface for creating
-    interactive web-based graphics, backed by the Bokeh visualization library <http://bokeh.pydata.org/>.
+  summary: A native R plotting library that provides a flexible declarative interface for creating interactive web-based graphics, backed by the Bokeh visualization library <http://bokeh.pydata.org/>.
   license_family: MIT
 
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/MIT
+    - LICENSE
 extra:
   recipe-maintainers:
     - conda-forge/r
