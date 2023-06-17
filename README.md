@@ -1,11 +1,11 @@
-About r-rbokeh
-==============
+About r-rbokeh-feedstock
+========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-rbokeh-feedstock/blob/main/LICENSE.txt)
 
 Home: https://hafen.github.io/rbokeh/ https://github.com/bokeh/rbokeh
 
 Package license: MIT
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-rbokeh-feedstock/blob/main/LICENSE.txt)
 
 Summary: A native R plotting library that provides a flexible declarative interface for creating interactive web-based graphics, backed by the Bokeh visualization library <https://bokeh.pydata.org/>.
 
